@@ -1,0 +1,19 @@
+{
+    "name": "kyeates/psr-loggers",
+    "description": "Helpful classes that implement psr/log",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kieran Yeates",
+            "email": "kieran@kyeates.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "kyeates\\PSRLoggers\\": "src/"
+        }
+    },
+    "require": {
+        "psr/log": "~1.0"
+    }
+}

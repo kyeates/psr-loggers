@@ -1,8 +1,15 @@
 <?php
-
+namespace kyeates\PSRLoggers;
 
 use Psr\Log\LoggerInterface;
 
+/**
+ * Class EchoLogger
+ * 
+ * Echo everything.
+ * 
+ * @package kyeates\PSRLoggers
+ */
 class EchoLogger implements LoggerInterface
 {
 
@@ -16,7 +23,7 @@ class EchoLogger implements LoggerInterface
      */
     public function emergency($message, array $context = array())
     {
-        $this->log('emergency', $message);
+        $this->log('emergency', $message, $context);
     }
 
     /**
@@ -32,7 +39,7 @@ class EchoLogger implements LoggerInterface
      */
     public function alert($message, array $context = array())
     {
-        $this->echoLog('emergency', $message);
+        $this->echoLog('emergency', $message, $context);
     }
 
     /**
@@ -47,7 +54,7 @@ class EchoLogger implements LoggerInterface
      */
     public function critical($message, array $context = array())
     {
-        $this->echoLog('critical', $message);
+        $this->echoLog('critical', $message, $context);
     }
 
     /**
@@ -61,7 +68,7 @@ class EchoLogger implements LoggerInterface
      */
     public function error($message, array $context = array())
     {
-        $this->echoLog('error', $message);
+        $this->echoLog('error', $message, $context);
     }
 
     /**
@@ -77,7 +84,7 @@ class EchoLogger implements LoggerInterface
      */
     public function warning($message, array $context = array())
     {
-        $this->echoLog('warning', $message);
+        $this->echoLog('warning', $message, $context);
     }
 
     /**
@@ -90,7 +97,7 @@ class EchoLogger implements LoggerInterface
      */
     public function notice($message, array $context = array())
     {
-        $this->echoLog('notice', $message);
+        $this->echoLog('notice', $message, $context);
     }
 
     /**
@@ -105,7 +112,7 @@ class EchoLogger implements LoggerInterface
      */
     public function info($message, array $context = array())
     {
-        $this->echoLog('info', $message);
+        $this->echoLog('info', $message, $context);
     }
 
     /**
@@ -118,7 +125,7 @@ class EchoLogger implements LoggerInterface
      */
     public function debug($message, array $context = array())
     {
-        $this->echoLog('debug', $message);
+        $this->echoLog('debug', $message, $context);
     }
 
     /**
@@ -132,10 +139,11 @@ class EchoLogger implements LoggerInterface
      */
     public function log($level, $message, array $context = array())
     {
-        $this->echoLog('log', $message);
+        $this->echoLog('log', $message, $context);
     }
     
-    private function echoLog($type, $message) {
-        echo date('Y-m-d H:i:s') . " {$type} - {$message}" . PHP_EOL;
+    private function echoLog($type, $message, $context) {
+        $jsonContext = json_encode($context);
+        echo date('Y-m-d H:i:s') . " {$type} - {$message} - {$jsonContext}" . PHP_EOL;
     }
 }
